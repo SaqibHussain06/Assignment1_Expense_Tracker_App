@@ -22,7 +22,9 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
+
+
+# Runs a single command using the runners shell
     - name: Install NodeJS
       uses: actions/setup-node@v2-beta
       with:
@@ -31,13 +33,13 @@ jobs:
     - name: GitHub Action for Yarn
       uses: Borales/actions-yarn@v2.0.0
       with:
-        cmd: install 
-          
+        cmd: install
+        
     - name: Build Yarn
       run: yarn build
-        
+    
     - name: Install Surge
       run: npm install --global surge
-    
-    - name: Surge Deployment
-      run: surge ./build exp-tracker-app-saqib.surge.sh --token ${{secrets.SURGE_TOKEN}} 
+      
+    - name: Deploy to Surge
+      run: surge ./build exp-tracker-app-saqib.surge.sh --token ${{secrets.SURGE_TOKEN}}
